@@ -15,6 +15,10 @@ module.exports = async (callback) => {
 
   kreditsKit.newInstance().then((ret) => {
     console.log(ret);
+    console.log(ret.logs);
+    const events = ret.logs.filter(log => log.event === 'InstalledApp').map(log => log.args)
+    console.log(events);
+
     callback();
   }).catch((e) => {
     console.log(e);

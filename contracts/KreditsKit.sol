@@ -31,11 +31,10 @@ contract KreditsKit is KitBase, APMNamehashOpen {
 
         Contributors contributors = Contributors(_installApp(dao, contributorsAppId));
         contributors.initialize();
-        acl.createPermission(root, contributors, contributors.MANAGE_CONTRIBUTORS_ROLE(), root);        
+        acl.createPermission(root, contributors, contributors.MANAGE_CONTRIBUTORS_ROLE(), root);
         
         Token token = Token(_installApp(dao, tokensAppId));
         token.initialize();
-        acl.createPermission(root, token, token.MINT_TOKEN_ROLE(), root);        
         
         Contributions contributions = Contributions(_installApp(dao, contributionsAppId));
         contributions.initialize(token);
@@ -43,8 +42,9 @@ contract KreditsKit is KitBase, APMNamehashOpen {
         acl.createPermission(root, contributions, contributions.ADD_CONTRIBUTION_ROLE(), root);        
         acl.createPermission(root, contributions, contributions.MANAGE_TOKEN_CONTRACT_ROLE(), root);        
         
-        acl.createPermission(contributions, token, token.MINT_TOKEN_ROLE(), root);        
-
+        acl.createPermission(root, token, token.MINT_TOKEN_ROLE(), this);
+        acl.grantPermission(contributions, token, token.MINT_TOKEN_ROLE());        
+        acl.setPermissionManager(root, token, token.MINT_TOKEN_ROLE());
 
         cleanupDAOPermissions(dao, acl, root);
 

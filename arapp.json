@@ -1,10 +1,25 @@
 {
   "roles": [
-   {
-     "name": "Dummy role",
-     "id": "DUMMY_ROLE",
-     "params": []
-   }
+    {
+      "name": "Add contributions",
+      "id": "ADD_CONTRIBUTION_ROLE",
+      "params": []
+    },
+    {
+      "name": "Manage token contract",
+      "id": "MANAGE_TOKEN_CONTRACT_ROLE",
+      "params": []
+    },
+    {
+      "name": "Manage contributors",
+      "id": "MANAGE_CONTRIBUTORS_ROLE",
+      "params": []
+    },
+    {
+      "name": "Mint token",
+      "id": "MINT_TOKEN_ROLE",
+      "params": []
+    }
  ],
   "environments": {
     "rinkeby": {
