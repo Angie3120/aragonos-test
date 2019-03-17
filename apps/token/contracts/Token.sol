@@ -14,16 +14,16 @@ contract Token is AragonApp {
   mapping (address => uint256) public balances;  
   uint256 public totalSupply;
 
-  event TokenMinted(address indexed recipient, uint256 amount, uint256 proposalId);
+  event TokenMinted(address indexed recipient, uint256 amount, uint256 contributionId);
   
   function initialize() public onlyInit {
     initialized();
   }
 
-  function mintFor(address contributorAccount, uint256 amount, uint proposalId) auth('MINT_TOKEN_ROLE') public {
+  function mintFor(address contributorAccount, uint256 amount, uint contributionId) public isInitialized auth('MINT_TOKEN_ROLE') {
     totalSupply = totalSupply.add(amount);
     balances[contributorAccount] = balances[contributorAccount].add(amount); 
 
-    emit TokenMinted(contributorAccount, amount, proposalId);
+    emit TokenMinted(contributorAccount, amount, contributionId);
   }
 }
