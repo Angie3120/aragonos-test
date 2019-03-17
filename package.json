@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "@aragon/kits-base": "^1.0.0",
-    "@aragon/os": "^4.1.0"
+    "@aragon/os": "^4.1.0",
+    "solc": "^0.4.25"
   },
   "devDependencies": {
     "@aragon/cli": "^5.5.0"

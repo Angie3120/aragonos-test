@@ -1,4 +1,11 @@
 {
+  "roles": [
+   {
+     "name": "Dummy role",
+     "id": "DUMMY_ROLE",
+     "params": []
+   }
+ ],
   "environments": {
     "rinkeby": {
       "wsRPC": "wss://rinkeby.eth.aragon.network/ws",
@@ -15,6 +22,5 @@
       "appName": "dummy.aragonpm.eth"
     }
   },
-  "roles": [],
   "path": "contracts/misc/DummyApp.sol"
 }

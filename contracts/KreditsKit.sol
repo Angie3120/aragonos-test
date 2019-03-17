@@ -22,11 +22,7 @@ contract KreditsKit is KitBase, APMNamehashOpen {
 
     constructor (DAOFactory _fac, ENS _ens) KitBase(_fac, _ens) {}
 
-    function newBareInstance() public returns (Kernel dao, ERCProxy proxy) {
-        return newInstance(bytes32(0), new bytes32[](0), address(0), new bytes(0));
-    }
-
-    function newInstance(bytes32 appId, bytes32[] roles, address authorizedAddress, bytes initializeCalldata) public returns (Kernel dao, ERCProxy proxy) {
+    function newInstance() public returns (Kernel dao, ERCProxy proxy) {
         address root = msg.sender;
         dao = fac.newDAO(this);
         ACL acl = ACL(dao.acl());
