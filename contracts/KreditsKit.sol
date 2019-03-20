@@ -44,17 +44,10 @@ contract KreditsKit is KitBase, APMNamehashOpen, ACLSyntaxSugar  {
         
         acl.createPermission(root, contributions, contributions.ADD_CONTRIBUTION_ROLE(), this);
 
-        //uint8 id = 203;
-        //uint8 op = 1;
-        //uint240 cAddress = uint240(contributors);
-        //uint256[] memory params = new uint256[](1);
-        //params[0] = uint256(id + op + cAddress);
-
-        //uint256[] memory params = new uint256[](3);
-        //params[0] = 203; //ORACLE_PARAM_ID
-        //params[1] = 1; // Op.EQ
-        //params[2] = uint256(contributors);
-        acl.grantPermissionP(root, contributions, contributions.ADD_CONTRIBUTION_ROLE(), arr(uint240(contributors), uint8(203), uint8(1)));
+        uint256[] memory params = new uint256[](1);
+        params[0] = uint256(203) << 248 | uint256(1) << 240 | uint240(contributors);
+        
+        acl.grantPermissionP(root, contributions, contributions.ADD_CONTRIBUTION_ROLE(), params);
         acl.setPermissionManager(root, contributions, contributions.ADD_CONTRIBUTION_ROLE());
         
         acl.createPermission(root, token, token.MINT_TOKEN_ROLE(), this);

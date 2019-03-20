@@ -75,6 +75,7 @@ contract Contributions is AragonApp {
   }
 
   function add(uint256 amount, address contributor, uint256 blocksToWait) public isInitialized auth(ADD_CONTRIBUTION_ROLE) {
+    //require(canPerform(msg.sender, ADD_CONTRIBUTION_ROLE, new uint256[](0)), 'nope');
     uint contributionId = contributionsCount + 1;
     ContributionData storage c = contributions[contributionId];
     c.exists = true;

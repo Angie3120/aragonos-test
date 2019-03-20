@@ -20,10 +20,18 @@ contract Token is AragonApp {
     initialized();
   }
 
+  function balanceOf(address account) public view returns (uint256) {
+    return balances[account];
+  }
+
   function mintFor(address contributorAccount, uint256 amount, uint contributionId) public isInitialized auth(MINT_TOKEN_ROLE) {
     totalSupply = totalSupply.add(amount);
     balances[contributorAccount] = balances[contributorAccount].add(amount); 
 
     emit TokenMinted(contributorAccount, amount, contributionId);
+  }
+
+  function count(uint256 amount) public isInitialized auth(MINT_TOKEN_ROLE) {
+    totalSupply.add(amount);
   }
 }
